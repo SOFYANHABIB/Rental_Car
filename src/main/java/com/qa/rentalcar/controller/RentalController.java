@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,6 +50,13 @@ private RentalServiceInterface<Rental> service;
 		return new ResponseEntity<Rental>(this.service.update(id, rental), HttpStatus.ACCEPTED);
 	}
 	
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Boolean> deleteDuck (@PathVariable int id){
+	
+		boolean deleted = this.service.delete(id);
+		
+		return (deleted) ? new ResponseEntity<Boolean>(deleted, HttpStatus.OK) : new ResponseEntity<Boolean>(deleted, HttpStatus.NOT_FOUND);
+	}
 	
 	
 	
