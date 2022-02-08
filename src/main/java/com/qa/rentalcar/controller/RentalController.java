@@ -31,27 +31,27 @@ private RentalServiceInterface<Rental> service;
 
 	
 	@PostMapping("/create")
-	public ResponseEntity<Rental> createDuck(@RequestBody Rental rental){
+	public ResponseEntity<Rental> createRental(@RequestBody Rental rental){
 		return new ResponseEntity<Rental>(this.service.create(rental), HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/getAll")
-	public ResponseEntity<List<Rental>> getAllDuck (){
+	public ResponseEntity<List<Rental>> getAllRental (){
 		return new ResponseEntity<List<Rental>>(this.service.getAll(), HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/getById/{id}")
-	public ResponseEntity<Rental> getByIdDuck (@PathVariable int id){
+	public ResponseEntity<Rental> getByIdRental (@PathVariable int id){
 		return new ResponseEntity<Rental>(this.service.getById(id), HttpStatus.FOUND);
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Rental> updateDuck (@PathVariable int id, @RequestBody Rental rental){
+	public ResponseEntity<Rental> updateRental (@PathVariable int id, @RequestBody Rental rental){
 		return new ResponseEntity<Rental>(this.service.update(id, rental), HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Boolean> deleteDuck (@PathVariable int id){
+	public ResponseEntity<Boolean> deleteRental (@PathVariable int id){
 	
 		boolean deleted = this.service.delete(id);
 		
