@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.rentalcar.domain.Rental;
 import com.qa.rentalcar.service.RentalServiceInterface;
+
 
 
 @RestController
@@ -36,6 +38,10 @@ private RentalServiceInterface<Rental> service;
 		return new ResponseEntity<List<Rental>>(this.service.getAll(), HttpStatus.FOUND);
 	}
 	
+	@GetMapping("/getById/{id}")
+	public ResponseEntity<Rental> getByIdDuck (@PathVariable int id){
+		return new ResponseEntity<Rental>(this.service.getById(id), HttpStatus.FOUND);
+	}
 	
 	
 	
