@@ -88,6 +88,113 @@ import javax.validation.constraints.NotNull;
 			this.carBack = carBack;
 			this.rentalCost = rentalCost;
 		}
+		
+		//Getters & Setters
+		public int getId() {
+			return id;
+		}
+
+
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+
+
+		public int getClienId() {
+			return clienId;
+		}
+
+
+
+		public void setClienId(int clienId) {
+			this.clienId = clienId;
+		}
+
+
+
+		public int getCarId() {
+			return carId;
+		}
+
+
+
+		public void setCarId(int carId) {
+			this.carId = carId;
+		}
+
+
+
+		public String getClientName() {
+			return clientName;
+		}
+
+
+
+		public void setClientName(String clientName) {
+			this.clientName = clientName;
+		}
+
+
+
+		public String getCarType() {
+			return carType;
+		}
+
+
+
+		public void setCarType(String carType) {
+			this.carType = carType;
+		}
+
+
+
+		public String getCarBrand() {
+			return carBrand;
+		}
+
+
+
+		public void setCarBrand(String carBrand) {
+			this.carBrand = carBrand;
+		}
+
+
+
+		public int getRentalPeriod() {
+			return rentalPeriod;
+		}
+
+
+
+		public void setRentalPeriod(int rentalPeriod) {
+			this.rentalPeriod = rentalPeriod;
+		}
+
+
+
+		public boolean isCarBack() {
+			return carBack;
+		}
+
+
+
+		public void setCarBack(boolean carBack) {
+			this.carBack = carBack;
+		}
+
+
+
+		public float getRentalCost() {
+			return rentalCost;
+		}
+
+
+
+		public void setRentalCost(float rentalCost) {
+			this.rentalCost = rentalCost;
+		}
 
 	
 	
