@@ -1,5 +1,6 @@
 package com.qa.rentalcar.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -39,7 +40,7 @@ public class RentalControllerTest {
 	@Test
 	void testCreateCont () throws Exception {
 		//----request (set up to send to DB)
-		//create a duck
+		//create a rental
 		Rental newR = new Rental(10, 15, "Richard", "luxury", "Tesla", 10, false, 850.60F);
 		//Convert into JSON string
 		String newRJSON = this.map.writeValueAsString(newR);
@@ -47,7 +48,7 @@ public class RentalControllerTest {
 		RequestBuilder mockRequest = post("/rental/create").contentType(MediaType.APPLICATION_JSON).content(newRJSON);
 		
 		///---response (returned)
-		Rental savedR = new Rental(2, 10, 15, "Richard", "luxury", "Tesla", 10, false, 850.60F);//already inserted one recored on line 21
+		Rental savedR = new Rental(2, 10, 15, "Richard", "luxury", "Tesla", 10, false, 850.60F);
 		//Convert to JSON
 		String savedRJSON = this.map.writeValueAsString(savedR);
 		
@@ -99,7 +100,18 @@ public class RentalControllerTest {
 	}
 	
 	
-	
+	@Test
+	void deleteTest() throws Exception {
+		Rental deleteRental = new Rental(1, 14, 16, "Tim", "luxury", "Porsh", 5, false, 2500.5F);
+
+		
+		int remId = 1;
+		RequestBuilder delRequest = delete("/rental/delete/" + remId);
+		ResultMatcher Status = status().isOk();
+		ResultMatcher Body = content().string("true");
+
+		this.mock.perform(delRequest).andExpect(Status).andExpect(Body);
+	}
 	
 	
 	
