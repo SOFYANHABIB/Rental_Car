@@ -114,6 +114,24 @@ public class RentalControllerTest {
 	}
 	
 	
+	@Test
+	void getByIdTest() throws Exception {
+		
+		
+		int byId = 1;
+	
+
+		RequestBuilder mockReq = get("/rental/getById/" + byId);
+		
+		Rental readR = new Rental(1, 13, 18, "Joe", "luxury", "BMW", 5, false, 500.50F);
+		String readRentalJSON = this.map.writeValueAsString(readR);
+
+		ResultMatcher status = status().isFound();
+		ResultMatcher body = content().json(readRentalJSON);
+
+		this.mock.perform(mockReq).andExpect(status).andExpect(body);
+
+	}
 	
 	
 	
