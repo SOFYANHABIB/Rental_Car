@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.qa.rentalcar.domain.Rental;
 import com.qa.rentalcar.repo.RentalRepo;
+
 
 
 
@@ -83,6 +85,28 @@ public class RentalServiceUnitTest {
 			
 			
 			Mockito.verify(this.repo, Mockito.times(1)).findAll();		
+		}
+		
+		
+		//GetById test
+		@Test 
+		void getByIdTest() {
+			
+			Rental rental5 = new Rental(5, 7, 6, "Alexia", "van", "Opel", 3, true, 80.5F);
+	        this.repo.save(rental5); 
+	        
+	        int validId  = 5;
+	        
+	        Optional<Rental> validRental = Optional.ofNullable(new Rental(5, 7, 6, "Alexia", "van", "Opel", 3, true, 80.5F));
+	        
+	        Mockito.when(this.repo.findById(validId)).thenReturn(validRental);
+	        
+	        assertEquals(validRental.get(), this.service.getById(validId));
+	        
+	        Mockito.verify(this.repo, Mockito.times(1)).findById(validId);
+			
+			
+			
 		}
 	
 	
