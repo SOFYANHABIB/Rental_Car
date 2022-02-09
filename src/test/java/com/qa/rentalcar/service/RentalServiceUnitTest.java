@@ -20,6 +20,7 @@ import com.qa.rentalcar.repo.RentalRepo;
 
 
 
+
 @SpringBootTest
 @ActiveProfiles("test")
 public class RentalServiceUnitTest {
@@ -108,8 +109,62 @@ public class RentalServiceUnitTest {
 			
 			
 		}
+		
+		
+//		//UPDATE test
+//		@Test
+//		
+//		void updateTest() {
+//			
+//			//given id and object
+//			
+//			int id = 1;
+//			
+//			//new rental to update
+//			Rental toUpdate = new Rental(9, 12, "Elon", "SUV", "Tesla", 5, false, 260.60F);
+//			
+//			//optional rental
+//			Optional<Rental> optRental = Optional.of(new Rental(id, 0, 0, null, null, null, 0, false, 0));
+//			
+//			//Updated rental
+//			Rental updated = new Rental(id, toUpdate.getClienId(), toUpdate.getCarId(), toUpdate.getClientName(), toUpdate.getCarType(), toUpdate.getCarBrand(), toUpdate.getRentalPeriod(), toUpdate.isCarBack(), toUpdate.getRentalCost());
+//			
+//			//When
+//			Mockito.when(this.repo.findById(id)).thenReturn(optRental);
+//			Mockito.when(this.repo.save(updated)).thenReturn(updated);
+//			
+//			//Them
+//			assertEquals(updated, this.service.update(id, toUpdate));
+//			
+//			//Verify
+//			Mockito.verify(this.repo, Mockito.times(1)).save(updated);
+//			Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+//			
+//			
+//				
+//				
+//			}
+//	
 	
-	
+		//DELETE test
+		@Test
+		void deleteTest() {
+			
+			//given
+			int id = 1;
+			
+			//When
+			Mockito.when(this.repo.existsById(id)).thenReturn(true, false);
+			
+			//Then
+			
+			assertEquals(false, this.service.delete(id));
+			
+			//Verify
+			Mockito.verify(this.repo, Mockito.times(1)).deleteById(id);
+			Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
+			
+		}
 	
 	
 	
