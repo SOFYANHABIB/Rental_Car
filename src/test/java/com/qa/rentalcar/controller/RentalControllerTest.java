@@ -1,8 +1,11 @@
 package com.qa.rentalcar.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +60,21 @@ public class RentalControllerTest {
 
 		
 		
+	}
+	
+	@Test
+	void readTest() throws Exception {
+		Rental readR = new Rental(1, 13, 18, "Joe", "luxury", "BMW", 5, false, 500.5F);
+		List<Rental> allRental = List.of(readR);
+		String readRentalJSON = this.map.writeValueAsString(allRental);
+
+		RequestBuilder mockReq = get("/rental/getAll");
+
+		ResultMatcher status = status().isFound();
+		ResultMatcher body = content().json(readRentalJSON);
+
+		this.mock.perform(mockReq).andExpect(status).andExpect(body);
+
 	}
 	
 	
