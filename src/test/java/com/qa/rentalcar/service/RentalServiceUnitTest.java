@@ -111,7 +111,7 @@ public class RentalServiceUnitTest {
 		}
 		
 		
-//		//UPDATE test
+		//UPDATE test
 //		@Test
 //		
 //		void updateTest() {
@@ -144,8 +144,42 @@ public class RentalServiceUnitTest {
 //				
 //				
 //			}
-//	
+		
+		//UPDATE test
+		@Test
+		
+		void updateTest() {
+			
+		
+			
+			int id = 1;
+			
+			//new rental to update
+			Rental toUpdate = new Rental(9, 12, "Elon", "SUV", "Tesla", 5, false, 260.60F);
+			
+			//optional rental
+			Optional<Rental> optRental = Optional.of(new Rental(id, 0, 0, null, null, null, 0, false, 0));
+			
+			//Updated rental
+			Rental updated = new Rental(id, toUpdate.getClienId(), toUpdate.getCarId(), toUpdate.getClientName(), toUpdate.getCarType(), toUpdate.getCarBrand(), toUpdate.getRentalPeriod(), toUpdate.isCarBack(), toUpdate.getRentalCost());
+			
+			//When
+			Mockito.when(this.repo.findById(id)).thenReturn(optRental);
+			Mockito.when(this.repo.save(updated)).thenReturn(updated);
+			
+			//Them
+			assertEquals(updated, this.service.update(id, toUpdate));
+			
+			//Verify
+		
+			Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+			
+			
+				
+				
+			}
 	
+		
 		//DELETE test
 		@Test
 		void deleteTest() {
@@ -165,6 +199,8 @@ public class RentalServiceUnitTest {
 			Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
 			
 		}
+	
+	
 	
 	
 	
