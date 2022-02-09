@@ -9,7 +9,5 @@ CREATE TABLE rental (
       rental_period INTEGER NOT NULL,
       car_back BOOLEAN NOT NULL,
       rental_cost FLOAT NOT NULL,
-      PRIMARY KEY (id),
-      FOREIGN KEY (clien_id) REFERENCES customers (clien_id),
-      FOREIGN KEY (car_id) REFERENCES cars (car_id)
+      PRIMARY KEY (id)
       );
