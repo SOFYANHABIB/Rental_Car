@@ -2,6 +2,7 @@ package com.qa.rentalcar.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -79,7 +80,23 @@ public class RentalControllerTest {
 	
 	
 	
-	
+	@Test
+	void updateTest() throws Exception {
+		Rental updateRental = new Rental(14, 16, "Tim", "luxury", "Porsh", 5, false, 2500.5F);
+		String updateRentalJSON = this.map.writeValueAsString(updateRental);
+		int IDupdate = 1;
+
+		RequestBuilder updateReq = put("/rental/update/" + IDupdate).contentType(MediaType.APPLICATION_JSON)
+				.content(updateRentalJSON);
+
+		Rental retUpdatedRental = new Rental(1, 14, 16, "Tim", "luxury", "Porsh", 5, false, 2500.5F);
+		String retUpdatedRentalJSON = this.map.writeValueAsString(retUpdatedRental);
+
+		ResultMatcher retStatus = status().isAccepted();
+		ResultMatcher retBody = content().json(retUpdatedRentalJSON);
+
+		this.mock.perform(updateReq).andExpect(retStatus).andExpect(retBody);
+	}
 	
 	
 	
