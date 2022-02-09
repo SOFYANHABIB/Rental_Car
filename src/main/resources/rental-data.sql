@@ -1,0 +1,1 @@
+INSERT INTO `rental`(`clien_id`, `car_id`, `client_name`, `car_type`, `car_brand`, `rental_period`, `car_back`, `rental_cost`) VALUES(13, 18, 'Joe', 'luxury', 'BMW', 5, false, 500.50);
