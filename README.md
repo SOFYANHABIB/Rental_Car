@@ -108,4 +108,4 @@ Packaging the project into a .jar file using Maven clean and install. Then doing
 
 IV) RISK ASSESSMENT
 
-<img width="1440" alt="Risk Assessment" src="https://user-images.githubusercontent.com/95347464/153510051-bbbe59a0-4dbd-4eaa-a2a7-0c789af7efdc.png">
+<img width="1376" alt="Risk Assessment" src="https://user-images.githubusercontent.com/95347464/153514054-43744eff-c952-46b9-afc1-4f945f75e746.png">
