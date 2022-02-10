@@ -14,6 +14,7 @@ In this project I focused on building the Rental table part. My aim is to contin
 * JIRA BOARD:
 https://mehdihabib.atlassian.net/jira/software/projects/QA/boards/1
 
+
 II) BUILDING PROCESS:
 
 I used Eclipse IDE to create the project. I opened a folder with Spring Starter Project where I specified the name of the project, the group, the package, the Artifact. Then I added all the dependencies needed (Spring Data Jpa, Spring Web, Spring Boot DevTools, MySQL Driver, H2 Database and Lombok).
@@ -104,3 +105,7 @@ I did the configuration of H2 database for testing in the application-test.prope
 Packaging the project into a .jar file using Maven clean and install. Then doing the last git push of the project to the dev branch and merge it with main branch.
 
 <img width="1023" alt="Git Graph" src="https://user-images.githubusercontent.com/95347464/153508655-a6a0d3a0-ba11-4772-9abc-6c94ab27aa88.png">
+
+IV) RISK ASSESSMENT
+
+<img width="1440" alt="Risk Assessment" src="https://user-images.githubusercontent.com/95347464/153510051-bbbe59a0-4dbd-4eaa-a2a7-0c789af7efdc.png">
