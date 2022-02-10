@@ -102,3 +102,5 @@ I did the configuration of H2 database for testing in the application-test.prope
 
 3) The final building stage:
 Packaging the project into a .jar file using Maven clean and install. Then doing the last git push of the project to the dev branch and merge it with main branch.
+
+<img width="1023" alt="Git Graph" src="https://user-images.githubusercontent.com/95347464/153508655-a6a0d3a0-ba11-4772-9abc-6c94ab27aa88.png">
