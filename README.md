@@ -9,6 +9,7 @@ It's a Spring Boot API for Rental Car agencies allowing them to manage cars rese
 <img width="680" alt="ERD Rental Car" src="https://user-images.githubusercontent.com/95347464/153390304-ba4c0758-3a53-436b-a4b1-2bf1185065c5.png">
 
 In this project I focused on building the Rental table part. My aim is to continue later on buliding the other tables and make the connection between them.
+
 <img width="145" alt="ERD Rental Table" src="https://user-images.githubusercontent.com/95347464/153391644-5a644a05-26f6-4092-bc7c-f66b70d0f2a7.png">
 
 * JIRA BOARD:
@@ -61,10 +62,27 @@ Data from POSTMAN were perfectly sent to my RentalCarDB database.
 
 2) Unit Test and Integration Test for classes:
 
-I did the configuration of H2 database for testing in the application-test.properties and I added JUnit4 dependency in my POM file.
-
-* I did the Unit Test for the domain class.
-<img width="1440" alt="Domain test" src="https://user-images.githubusercontent.com/95347464/153418486-292aa40a-6cfb-40bb-9f10-7a47ab576c9f.png">
+- I did the configuration of H2 database for testing in the application-test.properties and I added JUnit4 dependency in my POM file.
+- I added my SQL schema on rental-schema.sql file:
+DROP TABLE IF EXISTS `rental` CASCADE;
+CREATE TABLE rental (
+      id BIGINT AUTO_INCREMENT,
+      clien_id BIGINT NOT NULL,
+      car_id BIGINT NOT NULL,
+      client_name VARCHAR(255) NOT NULL,
+      car_type VARCHAR(255) NOT NULL,
+      car_brand VARCHAR(255) NOT NULL,
+      rental_period INTEGER NOT NULL,
+      car_back BOOLEAN NOT NULL,
+      rental_cost FLOAT NOT NULL,
+      PRIMARY KEY (id)
+      );
+      
+ - I also added a test data on rental-data.sql:
+  INSERT INTO `rental`(`clien_id`, `car_id`, `client_name`, `car_type`, `car_brand`, `rental_period`, `car_back`, `rental_cost`) VALUES(13, 18, 'Joe', 'luxury', 'BMW', 5, false, 500.50);
+  
+ * I did the Unit Test for the domain class.
+  <img width="1440" alt="Domain test" src="https://user-images.githubusercontent.com/95347464/153418486-292aa40a-6cfb-40bb-9f10-7a47ab576c9f.png">
 
 * I did the Unit Test for each CRUD method in the Service class:
 - Create test
@@ -102,10 +120,21 @@ I did the configuration of H2 database for testing in the application-test.prope
 <img width="1440" alt="Test Coverage" src="https://user-images.githubusercontent.com/95347464/153420757-165cb78b-556b-4967-b8a4-d3b288f615ab.png">
 
 3) The final building stage:
-Packaging the project into a .jar file using Maven clean and install. Then doing the last git push of the project to the dev branch and merge it with main branch.
+Compiling the project into a .jar file using Maven clean and install. Then doing the last git push of the project to the dev branch and merge it with main branch.
 
 <img width="1023" alt="Git Graph" src="https://user-images.githubusercontent.com/95347464/153508655-a6a0d3a0-ba11-4772-9abc-6c94ab27aa88.png">
 
 IV) RISK ASSESSMENT
 
 <img width="1376" alt="Risk Assessment" src="https://user-images.githubusercontent.com/95347464/153514054-43744eff-c952-46b9-afc1-4f945f75e746.png">
+
+V) WHAT DIDN'T GO AS PLANNED:
+
+In the final stage, I didn't find the main branch on my GitHub. I should have pushed my main branch to GitHub from the beginning instead of pushing the dev branch first.
+
+VI) POSSIBLE IMPROVEMENT OF THE PROJECT:
+
+- Building the other tables (AGENCY, CARS, CUSTOMERS) and establish entity relationship between them.
+- Adding a front-end (User Interface)
+
+
